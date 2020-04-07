@@ -30,4 +30,4 @@ if __name__=='__main__':
         .reduceByKey(lambda x,y: (x[0]+y[0], x[1]+y[1], max(x[2],y[2]))) \
         .mapValues(lambda x: (x[0],x[1], round(x[2]/x[0]*100))) \
         .sortByKey() \
-        .saveAsTextFile(output_folder)
+        .saveAsTextFile('output_folder')
