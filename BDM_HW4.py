@@ -4,10 +4,6 @@ sc = SparkContext()
 
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline  
-
-import seaborn as sns
-sns.set(style="whitegrid")
 
 import fiona
 import fiona.crs
@@ -18,11 +14,7 @@ import pyproj
 import shapely.geometry as geom
 import geopandas as gpd
 
-proj = pyproj.Proj(init="epsg:2263", preserve_units=True) 
-boroughs_geojson = 'boroughs.geojson'
-neighborhoods_geojson = 'neighborhoods.geojson'
-boroughs = gpd.read_file(boroughs_geojson).to_crs(fiona.crs.from_epsg(2263))
-neighborhoods = gpd.read_file(neighborhoods_geojson).to_crs(fiona.crs.from_epsg(2263))
+
 
 # We perform the same task using Spark. Here we run the task in
 # parallel on each partition (chunk of data). For each task, we
