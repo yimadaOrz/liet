@@ -1,10 +1,6 @@
 from pyspark import SparkContext
 sc = SparkContext()
 
-
-import matplotlib
-import matplotlib.pyplot as plt
-
 import fiona
 import fiona.crs
 import shapely
