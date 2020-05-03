@@ -71,15 +71,16 @@ def processTrips(pid, records):
     counts = {}
     
     for row in reader:
-        if 'NULL'  in row[2:6]:
+        if 'NULL'  in row[5:7] or 'NULL' in row[9:11]:
             continue
         try:
-            pickup = geom.Point(proj(float(row[3]), float(row[2])))
-            dropoff = geom.Point(proj(float(row[5]), float(row[4])))
+            pickup = geom.Point(proj(float(row[5]), float(row[6])))
+            dropoff = geom.Point(proj(float(row[9]), float(row[10])))
             borough = findZone(pickup, B_index, B_zones)
             neighborhood = findNeigborhoods(dropoff, N_index, N_zones)
         except:
             continue
+            
         if borough and neighborhood:
             key = (borough, neighborhood)
             counts[key] = counts.get(key, 0) + 1
